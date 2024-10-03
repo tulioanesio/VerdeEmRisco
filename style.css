@@ -11,6 +11,8 @@ body{
 }
 
 h1{
+    animation-name: slideLeft;
+    animation-duration: 1.5s;
     margin: auto;
     border: 3px black;
     border-style: solid;
@@ -31,8 +33,9 @@ h1{
     background: linear-gradient(to right, #0d2818, #04471c);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    animation-name: slideLeft;
-    animation-duration: 2s;
+    animation-name: slideDown;
+    animation-delay: 1.5s;
+    animation-duration: 1s;
     margin: 50px;
     padding: 10px;
     border: 3px black;
@@ -40,6 +43,8 @@ h1{
     box-shadow: 3px 2px #07160d;
     border-radius: 10px;
     color: #6ee8a0;
+    opacity: 0;
+    animation-fill-mode: forwards;
 }
 
 .social-media {
@@ -58,19 +63,20 @@ h1{
     border: 3px black solid;
     box-shadow: 3px 2px #07160d;
     border-radius: 10px;
-    margin: 10px; /* Espaçamento entre os botões */
-    transition: background-color 0.5s, opacity 0.5s;
+    margin: 10px;
+    transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.2s ease-in-out;
 }
 
 #instagram:hover {
     background-color: #6ee8a0;
-    opacity: 1; 
+    opacity: 1;
+    transform: scale(1.2);
 }
 
 #greenpeace {
     background-color: #0d2818;
     animation-name: slideUp;
-    animation-duration: 2.5s;
+    animation-duration: 2.7s;
     width: 64px;
     text-align: center;
     padding: 10px;
@@ -78,12 +84,13 @@ h1{
     box-shadow: 3px 2px #07160d;
     border-radius: 10px;
     margin: 10px;
-    transition: background-color 0.5s, opacity 0.5s;
+    transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.2s ease-in-out;
 }
 
 #greenpeace:hover {
     background-color: #6ee8a0;
     opacity: 1; 
+    transform: scale(1.2);
 }
 
 
@@ -94,8 +101,26 @@ h1{
 }
 
 @keyframes slideUp{
-    from{transform: translateY(2000px)}
+    from {
+        opacity: 0;
+        transform: translateY(2000px); /* Apenas translação, sem escala */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Apenas translação, sem escala */
+    }
+}
 
-    to{transform: translateY(0)}
+@keyframes slideDown{
+    
+    0%{
 
+    opacity:0;
+    transform: translateY(-100px)
+    }
+
+    100%{
+        
+    opacity:1;
+    transform: translateY(0)}
 }
